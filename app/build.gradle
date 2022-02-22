@@ -5,10 +5,19 @@
  * For more details take a look at the 'Building Java & JVM projects' chapter in the Gradle
  * User Manual available at https://docs.gradle.org/7.4/userguide/building_java_projects.html
  */
+buildscript {
+    ext {
+        springBootVersion = '2.6.0'
+        cucumberVersion = '7.0.0'
+    }
+}
 
 plugins {
     // Apply the application plugin to add support for building a CLI application in Java.
     id 'application'
+    id 'java'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 }
 
 repositories {
@@ -18,18 +27,41 @@ repositories {
 
 dependencies {
     // Use JUnit Jupiter for testing.
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter-api'
+    testImplementation 'org.junit.platform:junit-platform-suite'
+    testImplementation 'org.seleniumhq.selenium:selenium-java:3.141.59'
+    testImplementation 'io.cucumber:cucumber-junit-platform-engine:${cucumberVersion}'
+    testImplementation 'io.cucumber:cucumber-java:${cucumberVersion}'
+    testImplementation 'io.cucumber:cucumber-spring:${cucumberVersion}'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
 
-    // This dependency is used by the application.
-    implementation 'com.google.guava:guava:30.1.1-jre'
+    implementation 'org.springframework.boot:spring-boot-starter'
+    implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+
 }
+
+version = '1.0.0'
+group = 'com.scrux'
+sourceCompatibilities = '11'
+targetCompatibility = '11'
 
 application {
     // Define the main class for the application.
     mainClass = 'scrux.App'
 }
 
-tasks.named('test') {
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+test {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    systemProperty('cucumber.junit-platform.naming-strategy', 'long')
+    systemProperty(System.getProperties())
 }
