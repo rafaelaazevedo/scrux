@@ -23,3 +23,5 @@ On terminal run:
 [Page Object & Page Factory](https://www.tutorialselenium.com/2019/02/05/page-object-model-selenium-webdriver/)
 
 [Spring Boot](https://spring.io/projects/spring-boot)
+
+[Junit Jupiter](https://junit.org/junit5/docs/current/user-guide/#writing-tests)
