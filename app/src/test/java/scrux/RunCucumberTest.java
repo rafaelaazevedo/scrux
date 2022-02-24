@@ -1,4 +1,4 @@
-package com.scrux.test;
+package com.test.java.scrux;
 
 import org.junit.platform.suite.api.ConfigurationParameter;
 import org.junit.platform.suite.api.IncludeEngines;

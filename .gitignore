@@ -15,3 +15,7 @@ gradle-app.setting
 
 # Ignore Gradle build output directory
 build
+
+
+# Ignore OS files
+.DS_Store
