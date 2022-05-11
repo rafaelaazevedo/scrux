@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
 public class TestConfig {
 
     @Value("${remote.driver}")
-    private String useRemoteDriver;
+    private boolean useRemoteDriver;
 
     @Value("${user.remote.driver.url}")
     private String remoteUrl;
