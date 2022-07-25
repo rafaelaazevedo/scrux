@@ -1,9 +1,16 @@
 package com.test.java.scrux.config;
 
 import io.cucumber.spring.ScenarioScope;
+
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.net.Urls;
 import org.openqa.selenium.remote.RemoteWebDriver;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -21,12 +28,12 @@ public class TestConfig {
     private String remoteUrl;
 
     @Value("${user.remote.driver.capabilities}")
-    private String remoteCapabilities;
+    private Capabilities remoteCapabilities;
 
     @Bean
     @ScenarioScope
-    public WebDriver webDriver() throws MalFormedURLException {
-        webDriver driver = null;
+    public WebDriver webDriver() throws MalformedURLException {
+        WebDriver driver = null;
 
         if (useRemoteDriver) {
             driver = new RemoteWebDriver(new URL(remoteUrl), remoteCapabilities);

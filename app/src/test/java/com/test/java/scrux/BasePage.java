@@ -1,6 +1,9 @@
 package com.test.java.scrux;
 
 import io.cucumber.spring.ScenarioScope;
+
+import javax.annotation.PostConstruct;
+
 import org.openqa.selenium.StaleElementReferenceException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
