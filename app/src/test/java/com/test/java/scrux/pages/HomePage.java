@@ -11,11 +11,11 @@ import com.test.java.scrux.BasePage;
 @ScenarioScope
 public class HomePage extends BasePage {
 
-    @FindBy(id = "search_query_top")
+    @FindBy(className = "gLFyf gsfi")
     private WebElement searchBox;
 
-    @FindBy(id = "results")
-    private WebElement results;
+    @FindBy(id = "search")
+    private WebElement search;
 
     public void searchFor(String searchTerm) {
         searchBox.sendKeys(searchTerm);
@@ -26,7 +26,7 @@ public class HomePage extends BasePage {
     }
 
     public void waitForPageToLoad() {
-        waitForElementToBePresent(results);
+        waitForElementToBePresent(search);
     }
 
 }
