@@ -37,4 +37,17 @@ public class BasePage {
         }
     }
 
+    public void openURL(String url) {
+        driver.get(url);
+    }
+
+    protected void waitForElementToBePresent(WebElement element) {
+        try {
+            webDriverUtils.waitForElementToBePresent(element);
+        } catch (StaleElementReferenceException e) {
+            PageFactory.initElements(driver, this);
+            webDriverUtils.waitForElementToBePresent(element);
+        }
+    }
+
 }
