@@ -15,8 +15,8 @@ plugins {
 
 version = '1.0.0'
 group = 'com.scrux'
-sourceCompatibility = '1.8'
-targetCompatibility = '1.8'
+sourceCompatibility = '11'
+targetCompatibility = '11'
 
 repositories {
     // Use Maven Central for resolving dependencies.
@@ -37,7 +37,6 @@ dependencies {
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
-    testImplementation("org.junit.jupiter:junit-jupiter:5.8.2")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testImplementation("org.junit.platform:junit-platform-suite")
     testImplementation("org.seleniumhq.selenium:selenium-java:3.141.59")
@@ -50,4 +49,6 @@ dependencies {
 test {
     // Use JUnit Platform for unit tests.
     useJUnitPlatform()
+    systemProperty("cucumber.junit-platform.naming-strategy", "long")
+    systemProperty(System.getProperties())
 }
